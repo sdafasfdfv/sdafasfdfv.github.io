@@ -1,0 +1,551 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我的小站" href="https://sdafasfdfv.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我的小站" href="https://sdafasfdfv.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我的小站" href="https://sdafasfdfv.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="OpenClaw,命令行,教程,文档" />
+
+
+<link rel="canonical" href="https://sdafasfdfv.github.io/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">
+
+
+
+  <title>
+OpenClaw 完全命令参考文档！50+ 核心命令详解 - 技术 |
+Yume Shoka = 我的小站 = 记录生活，分享美好</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">OpenClaw 完全命令参考文档！50+ 核心命令详解
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2026-03-19 00:25:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-03-19T00:25:00+08:00">2026-03-19</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="/images/openclaw-commands-cover.svg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="item" rel="index" title="分类于 技术"><span itemprop="name">技术</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://sdafasfdfv.github.io/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="sdafasfdfv">
+    <meta itemprop="description" content="记录生活，分享美好, 一个简约动漫风格的个人博客">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我的小站">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <blockquote>
+<p>📚 整理完成！涵盖 Gateway、Agent、消息、浏览器自动化等 14 个功能模块，50+ 核心命令详解！</p>
+</blockquote>
+<hr>
+<h2 id="🎯-文档概览"><a href="#🎯-文档概览" class="headerlink" title="🎯 文档概览"></a>🎯 文档概览</h2><p>这份完整的 OpenClaw 命令参考文档包含了 <strong>50+ 个核心命令</strong>和子命令，涵盖 <strong>14 个主要功能模块</strong>，是你使用 OpenClaw 的必备速查手册！</p>
+<p><strong>文档亮点：</strong></p>
+<ul>
+<li>✅ 详细的命令选项说明</li>
+<li>💡 实际使用场景示例</li>
+<li>🔗 官方文档链接</li>
+<li>🚀 常用命令速查表</li>
+</ul>
+<hr>
+<h2 id="📖-目录结构"><a href="#📖-目录结构" class="headerlink" title="📖 目录结构"></a>📖 目录结构</h2><h3 id="1-核心命令"><a href="#1-核心命令" class="headerlink" title="1. 核心命令"></a>1. 核心命令</h3><ul>
+<li><code>openclaw status</code> - 显示频道健康和会话状态</li>
+<li><code>openclaw doctor</code> - 健康检查 + 快速修复</li>
+<li><code>openclaw configure</code> - 交互式配置向导</li>
+<li><code>openclaw setup</code> - 初始化配置和工作区</li>
+<li><code>openclaw onboard</code> - 交互式入职向导</li>
+</ul>
+<h3 id="2-Gateway-管理"><a href="#2-Gateway-管理" class="headerlink" title="2. Gateway 管理"></a>2. Gateway 管理</h3><ul>
+<li><code>openclaw gateway run/start/stop/restart</code> - Gateway 服务控制</li>
+<li><code>openclaw gateway status</code> - 显示服务状态</li>
+<li><code>openclaw gateway install/uninstall</code> - 系统服务安装</li>
+<li><code>openclaw gateway discover</code> - 发现 Gateway</li>
+<li><code>openclaw gateway probe</code> - 探测可达性</li>
+</ul>
+<h3 id="3-Agent-管理"><a href="#3-Agent-管理" class="headerlink" title="3. Agent 管理"></a>3. Agent 管理</h3><ul>
+<li><code>openclaw agents list/add/delete</code> - Agent 管理</li>
+<li><code>openclaw agents bind/unbind</code> - 路由绑定</li>
+<li><code>openclaw agent</code> - 运行 Agent 轮次</li>
+</ul>
+<h3 id="4-消息与频道"><a href="#4-消息与频道" class="headerlink" title="4. 消息与频道"></a>4. 消息与频道</h3><ul>
+<li><code>openclaw channels list/add/login</code> - 频道管理</li>
+<li><code>openclaw message send/read/broadcast</code> - 消息操作</li>
+<li><code>openclaw message poll/react/pin</code> - 高级功能</li>
+</ul>
+<h3 id="5-浏览器自动化"><a href="#5-浏览器自动化" class="headerlink" title="5. 浏览器自动化"></a>5. 浏览器自动化</h3><ul>
+<li><code>openclaw browser open/navigate</code> - 页面导航</li>
+<li><code>openclaw browser snapshot/screenshot</code> - 页面捕获</li>
+<li><code>openclaw browser click/type/fill</code> - 页面交互</li>
+<li><code>openclaw browser pdf/download</code> - 文件操作</li>
+</ul>
+<h3 id="6-设备与节点"><a href="#6-设备与节点" class="headerlink" title="6. 设备与节点"></a>6. 设备与节点</h3><ul>
+<li><code>openclaw nodes status/list</code> - 节点管理</li>
+<li><code>openclaw nodes approve/reject</code> - 配对审批</li>
+<li><code>openclaw nodes camera/screen</code> - 媒体捕获</li>
+<li><code>openclaw nodes run/invoke</code> - 命令执行</li>
+</ul>
+<h3 id="7-定时任务"><a href="#7-定时任务" class="headerlink" title="7. 定时任务"></a>7. 定时任务</h3><ul>
+<li><code>openclaw cron list/add/edit/rm</code> - 任务管理</li>
+<li><code>openclaw cron run/runs</code> - 执行和历史</li>
+</ul>
+<h3 id="8-模型配置"><a href="#8-模型配置" class="headerlink" title="8. 模型配置"></a>8. 模型配置</h3><ul>
+<li><code>openclaw models list/set/status</code> - 模型管理</li>
+<li><code>openclaw models scan</code> - 扫描可用模型</li>
+<li><code>openclaw models aliases/auth</code> - 别名和认证</li>
+</ul>
+<h3 id="9-内存与记忆"><a href="#9-内存与记忆" class="headerlink" title="9. 内存与记忆"></a>9. 内存与记忆</h3><ul>
+<li><code>openclaw memory search</code> - 搜索记忆</li>
+<li><code>openclaw memory index</code> - 重新索引</li>
+<li><code>openclaw memory status</code> - 索引状态</li>
+</ul>
+<h3 id="10-配置管理"><a href="#10-配置管理" class="headerlink" title="10. 配置管理"></a>10. 配置管理</h3><ul>
+<li><code>openclaw config get/set/unset</code> - 配置操作</li>
+<li><code>openclaw config file</code> - 配置文件路径</li>
+<li><code>openclaw config validate</code> - 配置验证</li>
+</ul>
+<h3 id="11-插件与扩展"><a href="#11-插件与扩展" class="headerlink" title="11. 插件与扩展"></a>11. 插件与扩展</h3><ul>
+<li><code>openclaw plugins list/install/update</code> - 插件管理</li>
+<li><code>openclaw plugins enable/disable</code> - 启用禁用</li>
+</ul>
+<h3 id="12-系统工具"><a href="#12-系统工具" class="headerlink" title="12. 系统工具"></a>12. 系统工具</h3><ul>
+<li><code>openclaw update</code> - 系统更新</li>
+<li><code>openclaw backup create/verify</code> - 备份管理</li>
+<li><code>openclaw secrets</code> - 密钥管理</li>
+</ul>
+<h3 id="13-界面工具"><a href="#13-界面工具" class="headerlink" title="13. 界面工具"></a>13. 界面工具</h3><ul>
+<li><code>openclaw dashboard</code> - 控制面板</li>
+<li><code>openclaw tui</code> - 终端 UI</li>
+</ul>
+<h3 id="14-其他工具"><a href="#14-其他工具" class="headerlink" title="14. 其他工具"></a>14. 其他工具</h3><ul>
+<li><code>openclaw sessions</code> - 会话管理</li>
+<li><code>openclaw skills</code> - Skills 管理</li>
+<li><code>openclaw qr</code> - 生成配对二维码</li>
+</ul>
+<hr>
+<h2 id="🚀-常用命令速查"><a href="#🚀-常用命令速查" class="headerlink" title="🚀 常用命令速查"></a>🚀 常用命令速查</h2><h3 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw setup                     <span class="comment"># 初始化配置</span></span><br><span class="line">openclaw gateway start             <span class="comment"># 启动 Gateway</span></span><br><span class="line">openclaw status                    <span class="comment"># 检查状态</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openclaw message send --target &lt;user&gt; --message <span class="string">&quot;Hello&quot;</span></span><br><span class="line">openclaw message <span class="built_in">read</span> --channel telegram --<span class="built_in">limit</span> 10</span><br></pre></td></tr></table></figure>
+
+<h3 id="Agent-管理"><a href="#Agent-管理" class="headerlink" title="Agent 管理"></a>Agent 管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw agents list               <span class="comment"># 列出 Agent</span></span><br><span class="line">openclaw sessions                  <span class="comment"># 列出会话</span></span><br><span class="line">openclaw memory search <span class="string">&quot;query&quot;</span>     <span class="comment"># 搜索记忆</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="浏览器自动化"><a href="#浏览器自动化" class="headerlink" title="浏览器自动化"></a>浏览器自动化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw browser open https://example.com</span><br><span class="line">openclaw browser screenshot MEDIA:page.png</span><br><span class="line">openclaw browser snapshot</span><br></pre></td></tr></table></figure>
+
+<h3 id="设备管理"><a href="#设备管理" class="headerlink" title="设备管理"></a>设备管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openclaw nodes status              <span class="comment"># 节点状态</span></span><br><span class="line">openclaw nodes approve --node &lt;<span class="built_in">id</span>&gt; <span class="comment"># 批准配对</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openclaw cron list                 <span class="comment"># 列出任务</span></span><br><span class="line">openclaw cron add                  <span class="comment"># 添加任务</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw doctor --fix              <span class="comment"># 自动修复</span></span><br><span class="line">openclaw status --deep             <span class="comment"># 深度检查</span></span><br><span class="line">openclaw logs                      <span class="comment"># 查看日志</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="更新维护"><a href="#更新维护" class="headerlink" title="更新维护"></a>更新维护</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openclaw update                    <span class="comment"># 更新系统</span></span><br><span class="line">openclaw backup create             <span class="comment"># 创建备份</span></span><br><span class="line">openclaw plugins update            <span class="comment"># 更新插件</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-使用示例"><a href="#💡-使用示例" class="headerlink" title="💡 使用示例"></a>💡 使用示例</h2><h3 id="Gateway-管理"><a href="#Gateway-管理" class="headerlink" title="Gateway 管理"></a>Gateway 管理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 前台运行 Gateway</span></span><br><span class="line">openclaw gateway run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定端口启动</span></span><br><span class="line">openclaw gateway --port 18789</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发模式</span></span><br><span class="line">openclaw gateway --dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务状态</span></span><br><span class="line">openclaw gateway status</span><br></pre></td></tr></table></figure>
+
+<h3 id="消息发送"><a href="#消息发送" class="headerlink" title="消息发送"></a>消息发送</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发送文本消息</span></span><br><span class="line">openclaw message send --target +15555550123 --message <span class="string">&quot;Hi&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送带图片的消息</span></span><br><span class="line">openclaw message send --target @chat --message <span class="string">&quot;Hello&quot;</span> --media photo.jpg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建投票</span></span><br><span class="line">openclaw message poll --channel discord \</span><br><span class="line">  --poll-question <span class="string">&quot;Snack?&quot;</span> \</span><br><span class="line">  --poll-option Pizza \</span><br><span class="line">  --poll-option Sushi</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加表情反应</span></span><br><span class="line">openclaw message react --emoji <span class="string">&quot;✅&quot;</span> --message-id 456</span><br></pre></td></tr></table></figure>
+
+<h3 id="浏览器自动化-1"><a href="#浏览器自动化-1" class="headerlink" title="浏览器自动化"></a>浏览器自动化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开网页</span></span><br><span class="line">openclaw browser open https://example.com</span><br><span class="line"></span><br><span class="line"><span class="comment"># 捕获页面快照</span></span><br><span class="line">openclaw browser snapshot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 截图保存</span></span><br><span class="line">openclaw browser screenshot MEDIA:page.png</span><br><span class="line"></span><br><span class="line"><span class="comment"># 点击元素</span></span><br><span class="line">openclaw browser click --ref e12</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导航到新页面</span></span><br><span class="line">openclaw browser navigate https://google.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="记忆搜索"><a href="#记忆搜索" class="headerlink" title="记忆搜索"></a>记忆搜索</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 搜索记忆</span></span><br><span class="line">openclaw memory search <span class="string">&quot;meeting notes&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看索引状态</span></span><br><span class="line">openclaw memory status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制重新索引</span></span><br><span class="line">openclaw memory index --force</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📋-命令选项详解"><a href="#📋-命令选项详解" class="headerlink" title="📋 命令选项详解"></a>📋 命令选项详解</h2><h3 id="openclaw-status"><a href="#openclaw-status" class="headerlink" title="openclaw status"></a>openclaw status</h3><p>显示频道健康和最近会话状态</p>
+<p><strong>选项：</strong></p>
+<ul>
+<li><code>--all</code> - 完整诊断</li>
+<li><code>--deep</code> - 深度探测频道</li>
+<li><code>--json</code> - JSON 输出</li>
+<li><code>--usage</code> - 显示模型使用情况</li>
+<li><code>--timeout &lt;ms&gt;</code> - 探测超时</li>
+</ul>
+<h3 id="openclaw-gateway"><a href="#openclaw-gateway" class="headerlink" title="openclaw gateway"></a>openclaw gateway</h3><p>运行、检查和查询 WebSocket Gateway</p>
+<p><strong>常用选项：</strong></p>
+<ul>
+<li><code>--port &lt;port&gt;</code> - 端口号</li>
+<li><code>--bind &lt;mode&gt;</code> - 绑定模式</li>
+<li><code>--auth &lt;mode&gt;</code> - 认证模式</li>
+<li><code>--token &lt;token&gt;</code> - 共享令牌</li>
+<li><code>--force</code> - 强制重启</li>
+<li><code>--verbose</code> - 详细日志</li>
+</ul>
+<h3 id="openclaw-browser"><a href="#openclaw-browser" class="headerlink" title="openclaw browser"></a>openclaw browser</h3><p>管理 OpenClaw 专用浏览器</p>
+<p><strong>常用子命令：</strong></p>
+<ul>
+<li><code>start</code> - 启动浏览器</li>
+<li><code>open</code> - 打开 URL</li>
+<li><code>snapshot</code> - 捕获页面快照</li>
+<li><code>screenshot</code> - 截图</li>
+<li><code>click</code> - 点击元素</li>
+<li><code>type</code> &#x2F; <code>press</code> - 输入文本&#x2F;按键</li>
+<li><code>fill</code> - 填写表单</li>
+<li><code>pdf</code> - 保存为 PDF</li>
+</ul>
+<hr>
+<h2 id="🔗-相关资源"><a href="#🔗-相关资源" class="headerlink" title="🔗 相关资源"></a>🔗 相关资源</h2><ul>
+<li><strong>完整文档</strong>: <code>~/.openclaw/workspace/docs/openclaw-commands-reference.md</code></li>
+<li><strong>官方文档</strong>: <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9wZW5jbGF3LmFpLw==">https://docs.openclaw.ai</span></li>
+<li><strong>CLI 文档</strong>: <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLm9wZW5jbGF3LmFpL2NsaQ==">https://docs.openclaw.ai/cli</span></li>
+<li><strong>GitHub</strong>: <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL29wZW5jbGF3L29wZW5jbGF3">https://github.com/openclaw/openclaw</span></li>
+<li><strong>Discord 社区</strong>: <span class="exturl" data-url="aHR0cHM6Ly9kaXNjb3JkLmdnL2NsYXdk">https://discord.gg/clawd</span></li>
+<li><strong>Skill 市场</strong>: <span class="exturl" data-url="aHR0cHM6Ly9jbGF3aHViLmNvbS8=">https://clawhub.com</span></li>
+</ul>
+<hr>
+<h2 id="📝-文档信息"><a href="#📝-文档信息" class="headerlink" title="📝 文档信息"></a>📝 文档信息</h2><ul>
+<li><strong>最后更新</strong>: 2026-03-19</li>
+<li><strong>OpenClaw 版本</strong>: 2026.3.13</li>
+<li><strong>文档位置</strong>: <code>~/.openclaw/workspace/docs/openclaw-commands-reference.md</code></li>
+<li><strong>内容量</strong>: 11,401 字节</li>
+</ul>
+<hr>
+<p><em>这份文档会持续更新，建议收藏备用！遇到问题时快速查找对应命令，提升工作效率！🚀</em></p>
+
+      <div class="tags">
+          <a href="/tags/OpenClaw/" rel="tag"><i class="ic i-tag"></i> OpenClaw</a>
+          <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" rel="tag"><i class="ic i-tag"></i> 命令行</a>
+          <a href="/tags/%E6%95%99%E7%A8%8B/" rel="tag"><i class="ic i-tag"></i> 教程</a>
+          <a href="/tags/%E6%96%87%E6%A1%A3/" rel="tag"><i class="ic i-tag"></i> 文档</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2026-03-19 00:23:49" itemprop="dateModified" datetime="2026-03-19T00:23:49+08:00">2026-03-19</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>sdafasfdfv <i class="ic i-at"><em>@</em></i>我的小站
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://sdafasfdfv.github.io/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="OpenClaw 完全命令参考文档！50+ 核心命令详解">https://sdafasfdfv.github.io/2026/03/19/OpenClaw-完全命令参考文档！50+ 核心命令详解/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/03/18/OpenClaw-%E5%AE%8C%E5%85%A8%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%815-%E5%88%86%E9%92%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-AI-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%A9%E6%89%8B/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;openclaw-cover.svg" title="OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 技术</span>
+  <h3>OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%96%87%E6%A1%A3%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">🎯 文档概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%96-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">📖 目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.</span> <span class="toc-text">1. 核心命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Gateway-%E7%AE%A1%E7%90%86"><span class="toc-number">2.2.</span> <span class="toc-text">2. Gateway 管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Agent-%E7%AE%A1%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text">3. Agent 管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B6%88%E6%81%AF%E4%B8%8E%E9%A2%91%E9%81%93"><span class="toc-number">2.4.</span> <span class="toc-text">4. 消息与频道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">2.5.</span> <span class="toc-text">5. 浏览器自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%AE%BE%E5%A4%87%E4%B8%8E%E8%8A%82%E7%82%B9"><span class="toc-number">2.6.</span> <span class="toc-text">6. 设备与节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">2.7.</span> <span class="toc-text">7. 定时任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%A8%A1%E5%9E%8B%E9%85%8D%E7%BD%AE"><span class="toc-number">2.8.</span> <span class="toc-text">8. 模型配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%86%85%E5%AD%98%E4%B8%8E%E8%AE%B0%E5%BF%86"><span class="toc-number">2.9.</span> <span class="toc-text">9. 内存与记忆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">2.10.</span> <span class="toc-text">10. 配置管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%8F%92%E4%BB%B6%E4%B8%8E%E6%89%A9%E5%B1%95"><span class="toc-number">2.11.</span> <span class="toc-text">11. 插件与扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E7%B3%BB%E7%BB%9F%E5%B7%A5%E5%85%B7"><span class="toc-number">2.12.</span> <span class="toc-text">12. 系统工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E7%95%8C%E9%9D%A2%E5%B7%A5%E5%85%B7"><span class="toc-number">2.13.</span> <span class="toc-text">13. 界面工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7"><span class="toc-number">2.14.</span> <span class="toc-text">14. 其他工具</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5"><span class="toc-number">3.</span> <span class="toc-text">🚀 常用命令速查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8"><span class="toc-number">3.1.</span> <span class="toc-text">快速启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E9%80%81%E6%B6%88%E6%81%AF"><span class="toc-number">3.2.</span> <span class="toc-text">发送消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agent-%E7%AE%A1%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">Agent 管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">3.4.</span> <span class="toc-text">浏览器自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86"><span class="toc-number">3.5.</span> <span class="toc-text">设备管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">3.6.</span> <span class="toc-text">定时任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4"><span class="toc-number">3.7.</span> <span class="toc-text">故障排除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%BB%B4%E6%8A%A4"><span class="toc-number">3.8.</span> <span class="toc-text">更新维护</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1-%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">4.</span> <span class="toc-text">💡 使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gateway-%E7%AE%A1%E7%90%86"><span class="toc-number">4.1.</span> <span class="toc-text">Gateway 管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81"><span class="toc-number">4.2.</span> <span class="toc-text">消息发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96-1"><span class="toc-number">4.3.</span> <span class="toc-text">浏览器自动化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%B0%E5%BF%86%E6%90%9C%E7%B4%A2"><span class="toc-number">4.4.</span> <span class="toc-text">记忆搜索</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8B-%E5%91%BD%E4%BB%A4%E9%80%89%E9%A1%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">📋 命令选项详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#openclaw-status"><span class="toc-number">5.1.</span> <span class="toc-text">openclaw status</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#openclaw-gateway"><span class="toc-number">5.2.</span> <span class="toc-text">openclaw gateway</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#openclaw-browser"><span class="toc-number">5.3.</span> <span class="toc-text">openclaw browser</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">🔗 相关资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E6%96%87%E6%A1%A3%E4%BF%A1%E6%81%AF"><span class="toc-number">7.</span> <span class="toc-text">📝 文档信息</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2026/03/18/OpenClaw-%E5%AE%8C%E5%85%A8%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%815-%E5%88%86%E9%92%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-AI-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%A9%E6%89%8B/" rel="bookmark" title="OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手">OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手</a></li><li class="active"><a href="/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" rel="bookmark" title="OpenClaw 完全命令参考文档！50+ 核心命令详解">OpenClaw 完全命令参考文档！50+ 核心命令详解</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="sdafasfdfv"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">sdafasfdfv</p>
+  <div class="description" itemprop="description">一个简约动漫风格的个人博客</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">3</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">2</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">9</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%8A%80%E6%9C%AF/" title="分类于 技术">技术</a>
+</div>
+
+    <span><a href="/2026/03/18/OpenClaw-%E5%AE%8C%E5%85%A8%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%815-%E5%88%86%E9%92%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-AI-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%A9%E6%89%8B/" title="OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手">OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%8A%80%E6%9C%AF/" title="分类于 技术">技术</a>
+</div>
+
+    <span><a href="/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="OpenClaw 完全命令参考文档！50+ 核心命令详解">OpenClaw 完全命令参考文档！50+ 核心命令详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%9A%8F%E7%AC%94/" title="分类于 随笔">随笔</a>
+</div>
+
+    <span><a href="/2026/03/18/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">sdafasfdfv @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/03/19/OpenClaw-完全命令参考文档！50+ 核心命令详解/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
