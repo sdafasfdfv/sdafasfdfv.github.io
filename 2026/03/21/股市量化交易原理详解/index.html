@@ -1,0 +1,546 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="我的小站" href="https://sdafasfdfv.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="我的小站" href="https://sdafasfdfv.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="我的小站" href="https://sdafasfdfv.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="量化交易,股票,投资策略,算法交易" />
+
+
+<link rel="canonical" href="https://sdafasfdfv.github.io/2026/03/21/%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/">
+
+
+
+  <title>
+股市量化交易原理详解 - 投资 |
+Yume Shoka = 我的小站 = 记录生活，分享美好</title>
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">股市量化交易原理详解
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2026-03-21 00:37:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2026-03-21T00:37:00+08:00">2026-03-21</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Yume Shoka</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+          <img src="/images/quantitative-trading-cover.svg">
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E6%8A%95%E8%B5%84/" itemprop="item" rel="index" title="分类于 投资"><span itemprop="name">投资</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://sdafasfdfv.github.io/2026/03/21/%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="sdafasfdfv">
+    <meta itemprop="description" content="记录生活，分享美好, 一个简约动漫风格的个人博客">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="我的小站">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="📊-股市量化交易原理详解"><a href="#📊-股市量化交易原理详解" class="headerlink" title="📊 股市量化交易原理详解"></a>📊 股市量化交易原理详解</h1><h2 id="一、什么是量化交易？"><a href="#一、什么是量化交易？" class="headerlink" title="一、什么是量化交易？"></a>一、什么是量化交易？</h2><p><strong>量化交易（Quantitative Trading）</strong> 是用数学模型、统计分析和计算机算法来做投资决策的交易方式。</p>
+<p>简单说：<strong>把投资变成一道数学题，用代码执行，而不是靠人的感觉。</strong></p>
+<hr>
+<h2 id="二、核心原理"><a href="#二、核心原理" class="headerlink" title="二、核心原理"></a>二、核心原理</h2><h3 id="1️⃣-数据驱动"><a href="#1️⃣-数据驱动" class="headerlink" title="1️⃣ 数据驱动"></a>1️⃣ 数据驱动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">历史数据 → 发现规律 → 建立模型 → 预测未来 → 自动交易</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>收集海量数据（价格、成交量、财务数据、新闻舆情等）</li>
+<li>用统计方法找规律（比如”均线金叉后上涨概率 65%”）</li>
+<li>把规律变成可执行的策略代码</li>
+</ul>
+<h3 id="2️⃣-消除情绪"><a href="#2️⃣-消除情绪" class="headerlink" title="2️⃣ 消除情绪"></a>2️⃣ 消除情绪</h3><table>
+<thead>
+<tr>
+<th>人工交易</th>
+<th>量化交易</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>恐惧时不敢买</td>
+<td>信号触发就买</td>
+</tr>
+<tr>
+<td>贪婪时不肯卖</td>
+<td>达到目标就卖</td>
+</tr>
+<tr>
+<td>容易追涨杀跌</td>
+<td>严格执行纪律</td>
+</tr>
+</tbody></table>
+<h3 id="3️⃣-概率思维"><a href="#3️⃣-概率思维" class="headerlink" title="3️⃣ 概率思维"></a>3️⃣ 概率思维</h3><p>量化不追求”每次都赢”，而是追求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">胜率 × 盈亏比 &gt; 1</span><br></pre></td></tr></table></figure>
+
+<p>比如：胜率 40%，但赚的时候赚 3 块，亏的时候亏 1 块，长期还是赚钱的。</p>
+<hr>
+<h2 id="三、常见量化策略类型"><a href="#三、常见量化策略类型" class="headerlink" title="三、常见量化策略类型"></a>三、常见量化策略类型</h2><h3 id="📈-趋势跟踪"><a href="#📈-趋势跟踪" class="headerlink" title="📈 趋势跟踪"></a>📈 趋势跟踪</h3><ul>
+<li><strong>原理</strong>：涨的继续涨，跌的继续跌</li>
+<li><strong>做法</strong>：均线突破、动量指标</li>
+<li><strong>例子</strong>：股价突破 20 日均线 → 买入</li>
+</ul>
+<h3 id="📉-均值回归"><a href="#📉-均值回归" class="headerlink" title="📉 均值回归"></a>📉 均值回归</h3><ul>
+<li><strong>原理</strong>：涨多了会跌，跌多了会涨</li>
+<li><strong>做法</strong>：布林带、RSI 超买超卖</li>
+<li><strong>例子</strong>：RSI&gt;70 超买 → 卖出；RSI&lt;30 超卖 → 买入</li>
+</ul>
+<h3 id="🔄-套利策略"><a href="#🔄-套利策略" class="headerlink" title="🔄 套利策略"></a>🔄 套利策略</h3><ul>
+<li><strong>原理</strong>：同一资产在不同市场价差</li>
+<li><strong>做法</strong>：期现套利、跨市场套利</li>
+<li><strong>例子</strong>：期货比现货贵 2% → 卖期货买现货</li>
+</ul>
+<h3 id="📰-因子投资"><a href="#📰-因子投资" class="headerlink" title="📰 因子投资"></a>📰 因子投资</h3><ul>
+<li><strong>原理</strong>：某些特征的股票长期跑赢</li>
+<li><strong>常见因子</strong>：<ul>
+<li>价值因子（低 PE、低 PB）</li>
+<li>成长因子（高营收增长）</li>
+<li>动量因子（过去涨得好）</li>
+<li>质量因子（高 ROE、低负债）</li>
+</ul>
+</li>
+</ul>
+<h3 id="🤖-高频交易"><a href="#🤖-高频交易" class="headerlink" title="🤖 高频交易"></a>🤖 高频交易</h3><ul>
+<li><strong>原理</strong>：用速度赚钱，持仓时间秒级</li>
+<li><strong>做法</strong>：做市、微观结构套利</li>
+<li><strong>门槛</strong>：需要超低延迟硬件（普通玩家玩不了）</li>
+</ul>
+<hr>
+<h2 id="四、量化交易流程"><a href="#四、量化交易流程" class="headerlink" title="四、量化交易流程"></a>四、量化交易流程</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────┐</span><br><span class="line">│ 1. 想法产生 │ ← &quot;我觉得均线策略可能有效&quot;</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 2. 数据收集 │ ← 下载历史行情、财务数据</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 3. 策略编写 │ ← 用 Python 写交易逻辑</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 4. 回测验证 │ ← 用历史数据测试效果</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 5. 风险评估 │ ← 最大回撤、夏普比率</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 6. 实盘运行 │ ← 连接券商 API 自动交易</span><br><span class="line">└──────┬──────┘</span><br><span class="line">       ↓</span><br><span class="line">┌─────────────┐</span><br><span class="line">│ 7. 监控优化 │ ← 持续跟踪，调整参数</span><br><span class="line">└─────────────┘</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、关键指标"><a href="#五、关键指标" class="headerlink" title="五、关键指标"></a>五、关键指标</h2><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>好值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>年化收益</strong></td>
+<td>一年赚多少%</td>
+<td>&gt;15%</td>
+</tr>
+<tr>
+<td><strong>最大回撤</strong></td>
+<td>最惨亏多少%</td>
+<td>&lt;20%</td>
+</tr>
+<tr>
+<td><strong>夏普比率</strong></td>
+<td>性价比（收益&#x2F;波动）</td>
+<td>&gt;1.5</td>
+</tr>
+<tr>
+<td><strong>胜率</strong></td>
+<td>赚钱交易占比</td>
+<td>&gt;40%</td>
+</tr>
+<tr>
+<td><strong>盈亏比</strong></td>
+<td>平均赚&#x2F;平均亏</td>
+<td>&gt;2</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="六、优缺点"><a href="#六、优缺点" class="headerlink" title="六、优缺点"></a>六、优缺点</h2><h3 id="✅-优点"><a href="#✅-优点" class="headerlink" title="✅ 优点"></a>✅ 优点</h3><ul>
+<li>纪律性强，不情绪化</li>
+<li>可同时监控几百只股票</li>
+<li>能快速发现人眼看不到的规律</li>
+<li>7×24 小时工作（加密货币）</li>
+</ul>
+<h3 id="❌-缺点"><a href="#❌-缺点" class="headerlink" title="❌ 缺点"></a>❌ 缺点</h3><ul>
+<li>历史规律未来可能失效</li>
+<li>黑天鹅事件无法预测</li>
+<li>过度拟合风险（回测完美，实盘亏钱）</li>
+<li>需要编程 + 数学 + 金融复合技能</li>
+</ul>
+<hr>
+<h2 id="七、入门建议"><a href="#七、入门建议" class="headerlink" title="七、入门建议"></a>七、入门建议</h2><h3 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 基础：Python + 统计学 + 金融学</span><br><span class="line">2. 工具：Pandas, NumPy, Backtrader, Zipline</span><br><span class="line">3. 数据：Tushare, AkShare, Yahoo Finance</span><br><span class="line">4. 实践：先模拟盘，再小资金实盘</span><br></pre></td></tr></table></figure>
+
+<h3 id="避坑指南"><a href="#避坑指南" class="headerlink" title="避坑指南"></a>避坑指南</h3><ul>
+<li>⚠️ 不要迷信”圣杯策略”</li>
+<li>⚠️ 回测要考虑手续费和滑点</li>
+<li>⚠️ 小资金别玩高频（手续费吃掉利润）</li>
+<li>⚠️ 分散投资，别 All-in 一个策略</li>
+</ul>
+<hr>
+<h2 id="八、一句话总结"><a href="#八、一句话总结" class="headerlink" title="八、一句话总结"></a>八、一句话总结</h2><blockquote>
+<p><strong>量化 &#x3D; 用科学方法做投资，赚认知的钱，不赚运气的钱。</strong></p>
+</blockquote>
+<hr>
+<h2 id="九、延伸资源"><a href="#九、延伸资源" class="headerlink" title="九、延伸资源"></a>九、延伸资源</h2><h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ul>
+<li>《量化交易：如何建立自己的算法交易事业》- Ernest Chan</li>
+<li>《打开量化投资的黑箱》- Rishi K. Narang</li>
+<li>《主动投资组合管理》- Grinold &amp; Kahn</li>
+</ul>
+<h3 id="在线工具"><a href="#在线工具" class="headerlink" title="在线工具"></a>在线工具</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuam9pbnF1YW50LmNvbS8=">聚宽 JoinQuant</span> - 国内量化平台</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly91cWVyLmRhdGF5ZXMuY29tLw==">优矿 Uqer</span> - 通联数据旗下</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly93d3cuYmFja3RyYWRlci5jb20v">Backtrader</span> - Python 回测框架</li>
+</ul>
+<h3 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h3><ul>
+<li><span class="exturl" data-url="aHR0cHM6Ly90dXNoYXJlLnByby8=">Tushare</span> - 免费 A 股数据</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9ha3NoYXJlLmFrZmFtaWx5Lnh5ei8=">AkShare</span> - 开源金融数据</li>
+<li><span class="exturl" data-url="aHR0cHM6Ly9maW5hbmNlLnlhaG9vLmNvbS8=">Yahoo Finance</span> - 全球市场数据</li>
+</ul>
+<hr>
+<p><em>本文首发于我的博客，转载请注明出处。</em></p>
+
+      <div class="tags">
+          <a href="/tags/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/" rel="tag"><i class="ic i-tag"></i> 量化交易</a>
+          <a href="/tags/%E8%82%A1%E7%A5%A8/" rel="tag"><i class="ic i-tag"></i> 股票</a>
+          <a href="/tags/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/" rel="tag"><i class="ic i-tag"></i> 投资策略</a>
+          <a href="/tags/%E7%AE%97%E6%B3%95%E4%BA%A4%E6%98%93/" rel="tag"><i class="ic i-tag"></i> 算法交易</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2026-03-21 00:40:40" itemprop="dateModified" datetime="2026-03-21T00:40:40+08:00">2026-03-21</time>
+  </span>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>sdafasfdfv <i class="ic i-at"><em>@</em></i>我的小站
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://sdafasfdfv.github.io/2026/03/21/%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" title="股市量化交易原理详解">https://sdafasfdfv.github.io/2026/03/21/股市量化交易原理详解/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" itemprop="url" rel="prev" data-background-image="&#x2F;images&#x2F;openclaw-commands-cover.svg" title="OpenClaw 完全命令参考文档！50+ 核心命令详解">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 技术</span>
+  <h3>OpenClaw 完全命令参考文档！50+ 核心命令详解</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">📊 股市量化交易原理详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">一、什么是量化交易？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、核心原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">1️⃣ 数据驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E6%B6%88%E9%99%A4%E6%83%85%E7%BB%AA"><span class="toc-number">1.2.2.</span> <span class="toc-text">2️⃣ 消除情绪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E6%A6%82%E7%8E%87%E6%80%9D%E7%BB%B4"><span class="toc-number">1.2.3.</span> <span class="toc-text">3️⃣ 概率思维</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E8%A7%81%E9%87%8F%E5%8C%96%E7%AD%96%E7%95%A5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">三、常见量化策略类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%88-%E8%B6%8B%E5%8A%BF%E8%B7%9F%E8%B8%AA"><span class="toc-number">1.3.1.</span> <span class="toc-text">📈 趋势跟踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%89-%E5%9D%87%E5%80%BC%E5%9B%9E%E5%BD%92"><span class="toc-number">1.3.2.</span> <span class="toc-text">📉 均值回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%84-%E5%A5%97%E5%88%A9%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.3.</span> <span class="toc-text">🔄 套利策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%B0-%E5%9B%A0%E5%AD%90%E6%8A%95%E8%B5%84"><span class="toc-number">1.3.4.</span> <span class="toc-text">📰 因子投资</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-%E9%AB%98%E9%A2%91%E4%BA%A4%E6%98%93"><span class="toc-number">1.3.5.</span> <span class="toc-text">🤖 高频交易</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.</span> <span class="toc-text">四、量化交易流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E9%94%AE%E6%8C%87%E6%A0%87"><span class="toc-number">1.5.</span> <span class="toc-text">五、关键指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">1.6.</span> <span class="toc-text">六、优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9"><span class="toc-number">1.6.1.</span> <span class="toc-text">✅ 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9"><span class="toc-number">1.6.2.</span> <span class="toc-text">❌ 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E5%85%A5%E9%97%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.7.</span> <span class="toc-text">七、入门建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="toc-number">1.7.1.</span> <span class="toc-text">学习路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97"><span class="toc-number">1.7.2.</span> <span class="toc-text">避坑指南</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.</span> <span class="toc-text">八、一句话总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%BB%B6%E4%BC%B8%E8%B5%84%E6%BA%90"><span class="toc-number">1.9.</span> <span class="toc-text">九、延伸资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D"><span class="toc-number">1.9.1.</span> <span class="toc-text">推荐书籍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7"><span class="toc-number">1.9.2.</span> <span class="toc-text">在线工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">1.9.3.</span> <span class="toc-text">数据源</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2026/03/21/%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" rel="bookmark" title="股市量化交易原理详解">股市量化交易原理详解</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="sdafasfdfv"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">sdafasfdfv</p>
+  <div class="description" itemprop="description">一个简约动漫风格的个人博客</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">4</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">3</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">13</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%8A%80%E6%9C%AF/" title="分类于 技术">技术</a>
+</div>
+
+    <span><a href="/2026/03/19/OpenClaw-%E5%AE%8C%E5%85%A8%E5%91%BD%E4%BB%A4%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3%EF%BC%8150+%20%E6%A0%B8%E5%BF%83%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/" title="OpenClaw 完全命令参考文档！50+ 核心命令详解">OpenClaw 完全命令参考文档！50+ 核心命令详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%8A%80%E6%9C%AF/" title="分类于 技术">技术</a>
+</div>
+
+    <span><a href="/2026/03/18/OpenClaw-%E5%AE%8C%E5%85%A8%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97%EF%BC%815-%E5%88%86%E9%92%9F%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84-AI-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%8A%A9%E6%89%8B/" title="OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手">OpenClaw 完全安装指南！5 分钟打造你的 AI 自动化助手</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%8A%95%E8%B5%84/" title="分类于 投资">投资</a>
+</div>
+
+    <span><a href="/2026/03/21/%E8%82%A1%E5%B8%82%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/" title="股市量化交易原理详解">股市量化交易原理详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%9A%8F%E7%AC%94/" title="分类于 随笔">随笔</a>
+</div>
+
+    <span><a href="/2026/03/18/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">sdafasfdfv @ Yume Shoka</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2026/03/21/股市量化交易原理详解/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
